@@ -11,7 +11,7 @@ body {
 
 .nav {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 10px;
+    padding: 15px;
     display: flex;
     justify-content: flex-end;
     background-color: #5b5b5b;
@@ -27,12 +27,17 @@ body {
 }
 
 .nav ul li {
-    margin-right: 20px;
-    border: 1px solid white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none; 
+    background-color: #E5E5E5;
     border-radius: 10px;
-    padding: 7px;
+    padding: 10px;
     color: white;
     cursor: pointer;
+    color: #5b5b5b; 
+    min-width: 75px;
+    text-align: center;
+    margin-right: 10px; 
 }
 
 .title {
@@ -66,7 +71,7 @@ body {
     cursor: pointer;
 }
 
-/* Responsive design for smaller screens */
+/* responsive design for smaller screens */
 @media (max-width: 768px) {
 
     body{ 

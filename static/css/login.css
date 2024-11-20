@@ -1,0 +1,58 @@
+*{
+    margin: 0 auto; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+body{ 
+    background-image: url("https://shib.ucmerced.edu/idp/images/SSO-background-background.png");
+   
+}
+
+
+.login-title{ 
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+#logo{ 
+    width: 150px; 
+}
+
+.container {
+    margin: 0 auto; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 300px; 
+    height: 300px; 
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.login-form{ 
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    gap: 10px; 
+    color: white; 
+    
+}
+
+.container label {
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+.container input {
+    width: 75%; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
