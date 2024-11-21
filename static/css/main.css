@@ -55,11 +55,6 @@ body {
 }
 
 #report:hover {
-    background-color: #5b5b5b;
-    color: white;
-}
-
-#report:hover {
     background-color: #007a99;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25),
                 0 1px 3px rgba(0, 0, 0, 0.2);

@@ -28,10 +28,13 @@ body{
     left: 50%; 
     transform: translate(-50%, -50%);
     width: 300px; 
-    height: 300px; 
+    height: 350px; 
     box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
     border-radius: 10px;
+    background-color: rgba(15, 45, 82, 0.5);
+    border: 1px solid rgb(255, 255, 255, 0.2);
 }
+
 
 .login-form{ 
     margin-top: 20px; 
@@ -41,6 +44,7 @@ body{
     align-items: center;
     gap: 10px; 
     color: white; 
+
     
 }
 
@@ -56,3 +60,44 @@ body{
     border-radius: 4px;
     box-sizing: border-box; 
 }
+
+#submit{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none;
+    background-color: #0091b3;
+    border-radius: 10px;
+    padding: 10px; 
+    color: white;
+    cursor: pointer;
+    width: 15vh; 
+    margin-top: 3vh; 
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#submit:hover {
+    background-color: #007a99;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25),
+                0 1px 3px rgba(0, 0, 0, 0.2);
+    top: 2px;
+    transform: scale(0.98);
+}
+
+#submit:active { /* used for when button is clicked */
+    background-color: #006680;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    top: 3px;
+    transform: scale(0.96);
+}
+
+
+@media (max-width: 768px) {
+
+    body{ 
+        /* background-position: center;
+        background-size: cover; */
+        background-position-x: right;
+    }
+
+}
+
