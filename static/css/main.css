@@ -142,6 +142,8 @@ body {
     transform: scale(0.96);
 }
 
+
+
 /* responsive design for smaller screens */
 @media (max-width: 768px) {
 
