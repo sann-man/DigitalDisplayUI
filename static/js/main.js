@@ -8,7 +8,7 @@ function openUploadModal(station, meal) {
     currentMeal = meal;
 
 
-    document.getElementById('uploadTitle').textContent = `Upload file for ${station} ( ${meal} )`;
+    document.getElementById('uploadTitle').textContent = ` ${station} (${meal})`;
     // change from disaply:none; to display: block; 
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('uploadModal').style.display = 'block';
