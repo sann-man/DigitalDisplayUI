@@ -20,6 +20,7 @@ body {
     position: relative; /* enables absolute positioning for child elements */
 }
 
+
 .nav .title {
     position: absolute; /* position title independently of the nav flow */
     left: 50%; 
@@ -39,8 +40,11 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    
     align-items: center;
 }
+
+
 
 #report{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
