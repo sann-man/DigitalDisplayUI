@@ -1,32 +1,18 @@
-/* overlay */
-.upload-container {
-    display: none;
-    position: fixed;
-    width: 400px; 
-    height: 30vh; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #0F2D52;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    z-index: 1000;
-    border: 1px solid rgb(255, 255, 255, 0.2)
+/* CSS Variables for consistent colors */
+:root {
+    --primary-blue: #0091b3;
+    --primary-blue-hover: #007a99;
+    --primary-blue-active: #006680;
+    --success-green: #2ecc71;
+    --success-green-hover: #27ae60;
+    --danger-red: #e74c3c;
+    --danger-red-hover: #c0392b;
+    --view-purple: #9b59b6;
+    --view-purple-hover: #8e44ad;
+    --background-dark: #0F2D52;
 }
 
-.upload-content{
-    position:absolute; 
-    top: 10px; 
-}
-
-.upload-content > h3, p{ 
-    color: white; 
-    margin-bottom: 2vh; 
-}
-
-
-/* sets backgournd opacity to be lower (overlay frame) */
+/* overlay background */
 .overlay {
     display: none;
     position: fixed;
@@ -38,6 +24,59 @@
     z-index: 999;
 }
 
+/* upload container */
+.upload-container {
+    display: none;
+    position: fixed;
+    width: 400px;
+    min-height: 200px;
+    max-height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-dark);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1000;
+    border: 1px solid rgb(255, 255, 255, 0.2);
+    overflow-y: auto;
+}
+
+.upload-content {
+    position: relative;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.upload-content > h3, 
+.upload-content > p { 
+    color: white; 
+    margin-bottom: 2vh; 
+}
+
+/* File viewer container */
+.file-viewer-container {
+    max-height: 40vh;
+    overflow-y: auto;
+    margin: 15px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 10px;
+}
+
+/* Button Styles */
+.button-base {
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button */
 .close-btn {
     position: absolute;
     right: 10px;
@@ -45,42 +84,175 @@
     cursor: pointer;
     padding: 5px 10px;
     border: none;
-    background: rgb(255, 0, 0, 0.5);
+    background-color: var(--danger-red);
+    color: white;
     border-radius: 4px;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: var(--danger-red-hover);
+}
+
+/* Upload related buttons */
+.upload-btn {
+    color: white;
+    padding: 10px;
+    margin-bottom: 3vh;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--primary-blue);
+    min-width: 75px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: var(--primary-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.upload-btn:active {
+    background-color: var(--primary-blue-active);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Submit/Confirm button */
+#upload-content-button {
+    background-color: var(--success-green);
+}
+
+#upload-content-button:hover {
+    background-color: var(--success-green-hover);
+}
+
+/* View button */
+.view-file-btn {
+    background-color: var(--view-purple);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-file-btn:hover {
+    background-color: var(--view-purple-hover);
+}
+
+/* Delete button */
+.delete-file-btn {
+    background-color: var(--danger-red);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-file-btn:hover {
+    background-color: var(--danger-red-hover);
 }
 
 .file-input {
     display: none;
 }
 
-.upload-btn{
+/* File list styling */
+#uploads-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.file-item {
     color: white;
-    padding: 10px;
-    margin-bottom: 3vh;
-    border-radius: 10px;
-    border: none;
-    background-color: #0091b3;
-    min-width: 75px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 6px rgba(0, 0, 0, 0.22);
-    cursor: pointer;
-    flex: 1;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    top: 0;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.upload-btn:hover {
-    background-color: #007a99;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25),
-                0 1px 3px rgba(0, 0, 0, 0.2);
-    top: 2px;
-    transform: scale(0.98);
+.file-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
 }
 
-.upload-btn:active {
-    background-color: #006680;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    top: 3px;
-    transform: scale(0.96);
+.empty-state {
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.empty-state.error {
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+
+/* alerts  */
+
+#alert-container{ 
+    display: none;
+    position: fixed;
+    width: 200px;
+    min-height: 75px;
+    max-height: 70vh;
+    top: 11%;
+    left: 91%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-dark);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1000;
+    border: 1px solid rgb(255, 255, 255, 0.2);
+    overflow-y: auto;
+}
+
+
+/* delete modal */
+
+#delete-container{ 
+    display: none;
+    position: fixed;
+    width: 300px;
+    min-height: 200px;
+    max-height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-dark);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1000;
+    border: 1px solid rgb(255, 255, 255, 0.2);
+    overflow-y: auto;
+}
+
+#delete-header{ 
+    margin-bottom: 30px; 
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .upload-container {
+        width: 90%;
+        margin: 10px;
+    }
 }

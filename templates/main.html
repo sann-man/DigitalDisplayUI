@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font -->
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    
+    <!-- SS -->
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/overlay.css">
     <title>Digital Display Upload HUB</title>
 </head>
 <body>
+    
     <div class="nav">
         <div class="title">
-            <h1 id="title-title">Digital Display Upload HUB</h1>
+            <h1 id="title-title">DineBoard</h1>
         </div>
         <ul>
             <li id="report">Report bug</li>
@@ -21,20 +27,33 @@
     <div id="overlay" class="overlay"></div>
 
     <!-- Upload modal -->
+    <!-- view files in this modal, upload file button under currentley dispalyed files -->
     <div id="uploadModal" class="upload-container">
         <button class="close-btn" onclick="closeUploadModal()">✕</button>
         <div class="upload-content">
-            <h3 id="uploadTitle">Upload File</h3>
+            <h3 id="uploadTitle"></h3>
+
+            <div class="file-viewer-container ">
+                <!-- just file name is displayed in list with delete option -->
+                 <!-- populate list with current files -->
+                 <!-- file image can be viewed upon opening or downloading etc. -->
+                <div class="files">
+                    <ul id = "uploads-list">
+                        
+                    </ul>
+                </div>
+            </div>
+
             <input type="file" id="fileInput" class="file-input" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-            <button id = "upload-file-btn" class="upload-btn" onclick="triggerFileInput()">Upload File</button>
-            <!-- view current files displayed -->
-            <button id = "view-file-button" class = "upload-btn" onclick="triggerFileView()">View Files</button>
             <p id="selectedFileName">No file selected</p>
-            <button class="upload-btn" onclick="uploadFile()">Upload</button>
+            <button id = "upload-file-btn" class="upload-btn" onclick="triggerFileInput()">Select file</button>
+            <!-- view current files displayed -->
+            <!-- <button id = "view-file-button" class = "upload-btn" onclick="triggerFileView()">View Files</button> -->
+            <button id = "upload-content-button" class="upload-btn" onclick="uploadFile()">Upload</button>
         </div>
     </div>
-    
 
+   
     <div class="station-selection">
         <div id="station-container" class="lake-wok">
             <h3 id="station-title">Lake-Wok</h3>
@@ -69,6 +88,22 @@
             </div>
         </div>
     </div>
+
+    <!-- alert modals (used instead of default alerts) -->
+     <!-- sliding and only stays for 2 - 3 seconds  -->
+    <div id = "alert-container" class="error-alert-container">
+        <div class="alert-header">
+            <h3 id = "alert-type"></h3>
+            <p id = "alert-message"></p>
+        </div> 
+    </div>
+
+    <!-- Are you sure you wnat to delete modal -->
+     <div id = "delete-container">
+        <h3 id = "delete-header">Are you sure you want to delete this file?</h3>
+        <button class = "upload-btn" id = "yes-delete">Yes</button>
+        <button class = "upload-btn" id = "no-delete">No</button>
+     </div>
 
     <!-- Link to external JavaScript file -->
     <script src="/static/js/main.js"></script>
