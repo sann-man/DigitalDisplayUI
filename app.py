@@ -1,12 +1,17 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
 import os
+from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
+
+from flask_sqlalchemy import SQLAlchemy 
+
+db = SQLAlchemy
 
 app = Flask(__name__)
 
 # configure upload settings
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'}
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'mp4'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #bug reports
@@ -14,6 +19,14 @@ REPORT_FOLDER = 'report'
 
 # create uploads directory if it doesn't exist
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+def createApp(): 
+    app.config()
+
+# send email with the bug that is reported
+def message(): 
+    msg = Message(subjet = "Bug reported", sender = "diningmarketing@ucmerced.edu", recipients="diningmarketing@ucmerced.edu")
+    
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

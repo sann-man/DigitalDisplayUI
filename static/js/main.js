@@ -15,6 +15,22 @@ function openUploadModal(station, meal) {
     loadExistingFiles();
 }
 
+function openBugModal() { 
+    document.getElementById('report-bug-modal').style.display = 'block'; 
+    document.getElementById('overlay').style.display = 'block';
+}
+
+function closeBugModal(){ 
+    document.getElementById('report-bug-modal').style.display = 'none'; 
+    document.getElementById('overlay').style.display = 'none';
+}
+
+// add toast message 
+function sendMessage(){ 
+    document.getElementById('report-bug-modal').style.display = 'none'; 
+    document.getElementById('overlay').style.display = 'none';
+}
+ 
 function loadExistingFiles() {
     // get files from specfied folder 
     fetch(`/files/${currentStation}/${currentMeal}`)
@@ -60,7 +76,6 @@ function loadExistingFiles() {
             });
         })
         
-        
         // catch error if theres an error uploading the file
         // errors from server related tuff can go here to
         // mostly just syntax right now
@@ -103,7 +118,6 @@ function alertModal(type, msg) {
     }
 
     alertContainer.style.display = 'block';
-    
     const alertMessageType = document.getElementById('alert-type'); 
     const messageElement = document.getElementById('alert-message');
 
@@ -111,7 +125,6 @@ function alertModal(type, msg) {
         alert('Message element not found');
         return;
     }
-    
     messageElement.textContent = msg;
     alertMessageType.textContent = type; 
 
@@ -125,7 +138,7 @@ function uploadFile() {
     const file = fileInput.files[0];
     
     if (!file) {
-        alertModal('Please select a file first', ''); 
+        alertModal('Please select a file', ''); 
         return;
     }
     
@@ -188,8 +201,15 @@ function deleteFile(filename) {
         deleteContainer.style.display = 'none'; 
         uploadModal.style.display = 'block'; 
     })
+}
 
+function report(){ 
+    const reportBtn = document.getElementById('report'); 
+    const reportArea = document.getElementById('report-container'); 
     
+    reportBtn.addEventListener('click', function(){ 
+        reportArea.style.display = 'block'; 
+    }); 
 }
 
 function viewFile(filename) {

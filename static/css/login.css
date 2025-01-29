@@ -6,9 +6,8 @@
 
 body{ 
     background-image: url("https://shib.ucmerced.edu/idp/images/SSO-background-background.png");
-   
+  
 }
-
 
 .login-title{ 
     background-color: white;
@@ -48,8 +47,6 @@ body{
     align-items: center;
     gap: 10px; 
     color: white; 
-
-    
 }
 
 .container label {
